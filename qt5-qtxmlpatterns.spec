@@ -91,7 +91,7 @@ Summary:	Devel files needed to build apps based on QtXmlPatterns
 Group:		Development/KDE and Qt
 Provides:	qt5-qtxmlpatterns-private-devel = %version
 Requires:	%{qtxmlpatternsd} = %version
-Requires:	qt5-qtcore-devel = %version
+Requires:	pkgconfig(Qt5Core) = %version
 
 %description -n %{qtxmlpatterns_p_d}
 Devel files needed to build apps based on QtXmlPatterns.
