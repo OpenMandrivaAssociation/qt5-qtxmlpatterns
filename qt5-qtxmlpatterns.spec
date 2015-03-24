@@ -1,27 +1,31 @@
-%define api 5
+%define api %(echo %{version} |cut -d. -f1)
 %define major %api
+%define beta alpha
 
-%define qtminor 4
-%define qtsubminor 1
-
-%define qtversion %{api}.%{qtminor}.%{qtsubminor}
+%define qtminor %(echo %{version} |cut -d. -f2)
+%define qtsubminor %(echo %{version} |cut -d. -f3)
 
 %define qtxmlpatterns %mklibname qt%{api}xmlpatterns %{major}
 %define qtxmlpatternsd %mklibname qt%{api}xmlpatterns -d
 %define qtxmlpatterns_p_d %mklibname qt%{api}xmlpatterns-private -d
 
-%define qttarballdir qtxmlpatterns-opensource-src-%{qtversion}
+%define qttarballdir qtxmlpatterns-opensource-src-%{version}%{?beta:-%{beta}}
 
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtxmlpatterns
-Version:	%{qtversion}
-Release:	1
+Version:	5.5.0
 Summary:	Qt GUI toolkit
 Group:		Development/KDE and Qt
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
 URL:		http://www.qt-project.org
+%if "%{beta}" != ""
+Source0:	http://download.qt.io/development_releases/qt/%{api}.%{qtminor}/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
+Release:	0.%{beta}.1
+%else
 Source0:	http://download.qt-project.org/official_releases/qt/%{api}.%{qtminor}/%{version}/submodules/%{qttarballdir}.tar.xz
+Release:	1
+%endif
 BuildRequires:	qt5-qtbase-devel = %{version}
 BuildRequires:	pkgconfig(Qt5Core) = %{version}
 
@@ -79,7 +83,7 @@ Devel files needed to build apps based on QtXmlPatterns.
 %{_qt5_libdir}/libQt5XmlPatterns.so
 %{_qt5_libdir}/pkgconfig/Qt5XmlPatterns.pc
 %{_qt5_includedir}/QtXmlPatterns
-%exclude %{_qt5_includedir}/QtXmlPatterns/%qtversion
+%exclude %{_qt5_includedir}/QtXmlPatterns/%version
 %{_qt5_libdir}/cmake/*
 %{_qt5_prefix}/mkspecs/modules/*
 %{_qt5_exampledir}/xmlpatterns
@@ -97,7 +101,7 @@ Requires:	pkgconfig(Qt5Core) = %version
 Devel files needed to build apps based on QtXmlPatterns.
 
 %files -n %{qtxmlpatterns_p_d}
-%{_qt5_includedir}/QtXmlPatterns/%qtversion
+%{_qt5_includedir}/QtXmlPatterns/%version
 
 #------------------------------------------------------------------------------
 
