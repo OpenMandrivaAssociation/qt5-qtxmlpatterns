@@ -1,6 +1,6 @@
 %define api %(echo %{version} |cut -d. -f1)
 %define major %api
-%define beta rc
+%define beta %nil
 
 %define qtminor %(echo %{version} |cut -d. -f2)
 %define qtsubminor %(echo %{version} |cut -d. -f3)
@@ -21,7 +21,7 @@ License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
 URL:		http://www.qt-project.org
 %if "%{beta}" != ""
 Source0:	http://download.qt.io/development_releases/qt/%{api}.%{qtminor}/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
-Release:	0.%{beta}.1
+Release:	1.%{beta}.1
 %else
 Source0:	http://download.qt-project.org/official_releases/qt/%{api}.%{qtminor}/%{version}/submodules/%{qttarballdir}.tar.xz
 Release:	1
