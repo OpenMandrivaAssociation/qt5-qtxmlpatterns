@@ -1,6 +1,6 @@
 %define api %(echo %{version} |cut -d. -f1)
 %define major %api
-%define beta
+%define beta %nil
 
 %define qtminor %(echo %{version} |cut -d. -f2)
 %define qtsubminor %(echo %{version} |cut -d. -f3)
@@ -9,23 +9,23 @@
 %define qtxmlpatternsd %mklibname qt%{api}xmlpatterns -d
 %define qtxmlpatterns_p_d %mklibname qt%{api}xmlpatterns-private -d
 
-%define qttarballdir qtxmlpatterns-opensource-src-%{version}%{?beta:-%{beta}}
-
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtxmlpatterns
 Version:	5.5.0
+%if "%{beta}" != ""
+Release:	1.%{beta}.1
+%define qttarballdir qtxmlpatterns-opensource-src-%{version}-%{beta}
+Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
+%else
+Release:	1
+%define qttarballdir qtxmlpatterns-opensource-src-%{version}
+Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
+%endif
 Summary:	Qt GUI toolkit
 Group:		Development/KDE and Qt
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
-URL:		http://www.qt-project.org
-%if "%{beta}" != ""
-Source0:	http://download.qt.io/development_releases/qt/%{api}.%{qtminor}/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
-Release:	1.%{beta}.1
-%else
-Source0:	http://download.qt-project.org/official_releases/qt/%{api}.%{qtminor}/%{version}/submodules/%{qttarballdir}.tar.xz
-Release:	1
-%endif
+URL:		http://www.qt.io
 BuildRequires:	qt5-qtbase-devel = %{version}
 BuildRequires:	pkgconfig(Qt5Core) = %{version}
 
@@ -43,7 +43,7 @@ Requires:	%{name}-xmlpatterns = %{version}
 %description -n %{qtxmlpatterns}
 Qt%{api} Component Library.
 
-The QtXmlPatterns module provides support for XPath, XQuery, XSLT and 
+The QtXmlPatterns module provides support for XPath, XQuery, XSLT and
 XML Schema validation.
 
 %files -n %{qtxmlpatterns}
