@@ -12,7 +12,7 @@
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtxmlpatterns
-Version:	5.5.0
+Version:	5.5.1
 %if "%{beta}" != ""
 Release:	1.%{beta}.1
 %define qttarballdir qtxmlpatterns-opensource-src-%{version}-%{beta}
@@ -26,7 +26,6 @@ Summary:	Qt GUI toolkit
 Group:		Development/KDE and Qt
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
 URL:		http://www.qt.io
-BuildRequires:	qt5-qtbase-devel = %{version}
 BuildRequires:	pkgconfig(Qt5Core) = %{version}
 
 %description
@@ -72,7 +71,6 @@ XML Schema validation.
 Summary:	Devel files needed to build apps based on QtXmlPatterns
 Group:		Development/KDE and Qt
 Requires:	%{qtxmlpatterns} = %version
-Requires:	qt5-qtbase-devel = %{version}
 
 %description -n %{qtxmlpatternsd}
 Devel files needed to build apps based on QtXmlPatterns.
