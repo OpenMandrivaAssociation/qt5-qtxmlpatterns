@@ -1,6 +1,6 @@
 %define api %(echo %{version} |cut -d. -f1)
 %define major %api
-%define beta beta3
+%define beta beta4
 
 %define qtminor %(echo %{version} |cut -d. -f2)
 %define qtsubminor %(echo %{version} |cut -d. -f3)
@@ -15,7 +15,7 @@ Name:		qt5-qtxmlpatterns
 Version:	5.10.0
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
-%define qttarballdir qtxmlpatterns-everywhere-src-%{version}
+%define qttarballdir qtxmlpatterns-everywhere-src-%{version}-%{beta}
 Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
 %else
 Release:	1
