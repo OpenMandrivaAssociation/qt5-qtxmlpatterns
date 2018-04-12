@@ -32,6 +32,8 @@ BuildRequires:	pkgconfig(Qt5Network) = %{version}
 BuildRequires:	pkgconfig(Qt5Gui) = %{version}
 BuildRequires:	pkgconfig(Qt5Widgets) = %{version}
 BuildRequires:	qmake5 = %{version}
+# For the Provides: generator
+BuildRequires:	cmake >= 3.11.0-1
 
 %description
 The QtXmlPatterns module provides support for XPath, XQuery, XSLT and
