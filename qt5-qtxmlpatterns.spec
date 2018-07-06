@@ -12,7 +12,7 @@
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtxmlpatterns
-Version:	5.8.0
+Version:	5.9.2
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
 %define qttarballdir qtxmlpatterns-opensource-src-%{version}-%{beta}
@@ -22,6 +22,7 @@ Release:	1
 %define qttarballdir qtxmlpatterns-opensource-src-%{version}
 Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
 %endif
+Patch0:		qtxmlpatterns-5.9.1-clang-workaround.patch
 Summary:	Qt GUI toolkit
 Group:		Development/KDE and Qt
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
@@ -109,6 +110,7 @@ Devel files needed to build apps based on QtXmlPatterns.
 
 %prep
 %setup -q -n %qttarballdir
+%apply_patches
 
 %build
 %qmake_qt5

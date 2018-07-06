@@ -1,0 +1,11 @@
+--- qtxmlpatterns-opensource-src-5.9.1/src/xmlpatterns/parser/qquerytransformparser.cpp.omv~	2017-06-30 19:39:58.767804826 +0200
++++ qtxmlpatterns-opensource-src-5.9.1/src/xmlpatterns/parser/qquerytransformparser.cpp	2017-06-30 19:40:09.096560422 +0200
+@@ -1493,7 +1493,7 @@ typedef short int yytype_int16;
+ # define YYUSE(E) /* empty */
+ #endif
+ 
+-#if defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
++#if !defined(__clang__) && defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
+ /* Suppress an incorrect diagnostic about yylval being uninitialized.  */
+ # define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN \
+     _Pragma ("GCC diagnostic push") \
