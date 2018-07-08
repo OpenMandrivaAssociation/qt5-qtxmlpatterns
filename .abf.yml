@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   qtxmlpatterns-opensource-src-5.9.2.tar.xz: 77b343a0664b5e7a974285ee17b5056c17deac05
+sources:
+  qtxmlpatterns-opensource-src-5.9.6.tar.xz: b8c0c12f98e05abc57b9c38a17266ad105ec0df6
