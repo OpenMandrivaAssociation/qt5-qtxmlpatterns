@@ -111,17 +111,16 @@ Devel files needed to build apps based on QtXmlPatterns.
 #------------------------------------------------------------------------------
 
 %prep
-%setup -q -n %qttarballdir
-%apply_patches
+%autosetup -n %qttarballdir -p1
 
 %build
 %qmake_qt5
 
-%make
+%make_build
 #------------------------------------------------------------------------------
 
 %install
-%makeinstall_std INSTALL_ROOT=%{buildroot}
+%make_install INSTALL_ROOT=%{buildroot}
 
 install -d %{buildroot}/%{_qt5_docdir}
 
