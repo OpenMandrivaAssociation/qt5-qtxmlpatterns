@@ -1,6 +1,6 @@
 %define api %(echo %{version} |cut -d. -f1)
 %define major %api
-%define beta rc2
+%define beta rc3
 
 %define qtminor %(echo %{version} |cut -d. -f2)
 %define qtsubminor %(echo %{version} |cut -d. -f3)
@@ -55,6 +55,7 @@ XML Schema validation.
 
 %files -n %{qtxmlpatterns}
 %{_qt5_libdir}/libQt5XmlPatterns.so.%{api}*
+%{_libdir}/qt5/qml/QtQuick/XmlListModel
 
 #------------------------------------------------------------------------------
 
