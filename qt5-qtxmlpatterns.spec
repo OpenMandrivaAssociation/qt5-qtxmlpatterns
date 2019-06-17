@@ -33,6 +33,8 @@ BuildRequires:	pkgconfig(Qt5Gui) = %{version}
 BuildRequires:	pkgconfig(Qt5Widgets) = %{version}
 BuildRequires:	pkgconfig(Qt5Quick) = %{version}
 BuildRequires:	pkgconfig(Qt5Qml) = %{version}
+# (tpg) needed for QtQuick.XmlListModel
+BuildRequires:	qt5-qtqml-private-devel = %{version}
 BuildRequires:	qmake5 = %{version}
 # For the Provides: generator
 BuildRequires:	cmake >= 3.11.0-1
@@ -56,15 +58,15 @@ XML Schema validation.
 
 %files -n %{qtxmlpatterns}
 %{_qt5_libdir}/libQt5XmlPatterns.so.%{api}*
-%{_libdir}/qt5/qml/QtQuick/XmlListModel
+%{_qt5_libdir}/qml/QtQuick/XmlListModel
 
 #------------------------------------------------------------------------------
 
 %package	xmlpatterns
 Summary:	Qt%{api} Xmlpatterns Utility
 Group:		Development/KDE and Qt
-Provides:	qt5-xmlpatterns = %version-%release
-Requires: 	%{qtxmlpatterns} = %version-%release
+Provides:	qt5-xmlpatterns = %{EVRD}
+Requires: 	%{qtxmlpatterns} = %{EVRD}
 
 %description xmlpatterns
 Qt%{api} Xmlpatterns Utility.
@@ -74,14 +76,13 @@ XML Schema validation.
 
 %files xmlpatterns
 %{_qt5_bindir}/xmlpatterns
-%{_qt_prefix}/qml/QtQuick/XmlListModel
 
 #------------------------------------------------------------------------------
 
 %package -n	%{qtxmlpatternsd}
 Summary:	Devel files needed to build apps based on QtXmlPatterns
 Group:		Development/KDE and Qt
-Requires:	%{qtxmlpatterns} = %version
+Requires:	%{qtxmlpatterns} = %{version}
 
 %description -n %{qtxmlpatternsd}
 Devel files needed to build apps based on QtXmlPatterns.
@@ -92,7 +93,7 @@ Devel files needed to build apps based on QtXmlPatterns.
 %{_qt5_libdir}/libQt5XmlPatterns.so
 %{_qt5_libdir}/pkgconfig/Qt5XmlPatterns.pc
 %{_qt5_includedir}/QtXmlPatterns
-%exclude %{_qt5_includedir}/QtXmlPatterns/%version
+%exclude %{_qt5_includedir}/QtXmlPatterns/%{version}
 %{_qt5_libdir}/cmake/*
 %{_qt5_prefix}/mkspecs/modules/*
 %{_qt5_exampledir}/xmlpatterns
@@ -102,15 +103,15 @@ Devel files needed to build apps based on QtXmlPatterns.
 %package -n	%{qtxmlpatterns_p_d}
 Summary:	Devel files needed to build apps based on QtXmlPatterns
 Group:		Development/KDE and Qt
-Provides:	qt5-qtxmlpatterns-private-devel = %version
-Requires:	%{qtxmlpatternsd} = %version
-Requires:	pkgconfig(Qt5Core) = %version
+Provides:	qt5-qtxmlpatterns-private-devel = %{version}
+Requires:	%{qtxmlpatternsd} = %{version}
+Requires:	pkgconfig(Qt5Core) = %{version}
 
 %description -n %{qtxmlpatterns_p_d}
 Devel files needed to build apps based on QtXmlPatterns.
 
 %files -n %{qtxmlpatterns_p_d}
-%{_qt5_includedir}/QtXmlPatterns/%version
+%{_qt5_includedir}/QtXmlPatterns/%{version}
 
 #------------------------------------------------------------------------------
 
