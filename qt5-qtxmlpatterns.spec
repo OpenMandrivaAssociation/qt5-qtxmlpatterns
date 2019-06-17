@@ -18,7 +18,7 @@ Release:	0.%{beta}.1
 %define qttarballdir qtxmlpatterns-everywhere-src-%{version}-%{beta}
 Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%(echo %{beta} |sed -e "s,1$,,")/submodules/%{qttarballdir}.tar.xz
 %else
-Release:	1
+Release:	1.1
 %define qttarballdir qtxmlpatterns-everywhere-src-%{version}
 Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
 %endif
@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(Qt5Core) = %{version}
 BuildRequires:	pkgconfig(Qt5Network) = %{version}
 BuildRequires:	pkgconfig(Qt5Gui) = %{version}
 BuildRequires:	pkgconfig(Qt5Widgets) = %{version}
+BuildRequires:	pkgconfig(Qt5Quick) = %{version}
 BuildRequires:	qmake5 = %{version}
 # For the Provides: generator
 BuildRequires:	cmake >= 3.11.0-1
