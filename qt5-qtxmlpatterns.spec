@@ -58,7 +58,7 @@ XML Schema validation.
 
 %files -n %{qtxmlpatterns}
 %{_qt5_libdir}/libQt5XmlPatterns.so.%{api}*
-%{_qt5_libdir}/qml/QtQuick/XmlListModel/*
+%{_qt5_libdir}/qt5/qml/QtQuick/XmlListModel/*
 
 #------------------------------------------------------------------------------
 
