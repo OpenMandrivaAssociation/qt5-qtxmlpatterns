@@ -74,6 +74,7 @@ XML Schema validation.
 
 %files xmlpatterns
 %{_qt5_bindir}/xmlpatterns
+%{_qt_prefix}/qml/QtQuick/XmlListModel
 
 #------------------------------------------------------------------------------
 
