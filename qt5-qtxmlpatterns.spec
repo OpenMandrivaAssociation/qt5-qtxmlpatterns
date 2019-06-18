@@ -33,6 +33,7 @@ BuildRequires:	pkgconfig(Qt5Gui) = %{version}
 BuildRequires:	pkgconfig(Qt5Widgets) = %{version}
 BuildRequires:	pkgconfig(Qt5Quick) = %{version}
 BuildRequires:	pkgconfig(Qt5Qml) = %{version}
+BuildRequires:	qt5-qtqml-private-devel
 BuildRequires:	qmake5 = %{version}
 # For the Provides: generator
 BuildRequires:	cmake >= 3.11.0-1
