@@ -12,7 +12,7 @@
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtxmlpatterns
-Version:	5.15.1
+Version:	5.15.2
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
 %define qttarballdir qtxmlpatterns-everywhere-src-%{version}-%{beta}
