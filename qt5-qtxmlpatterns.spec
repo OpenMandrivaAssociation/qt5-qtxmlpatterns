@@ -41,6 +41,7 @@ BuildRequires:	qt5-qtqml-private-devel = %{version}
 BuildRequires:	qmake5 = %{version}
 # For the Provides: generator
 BuildRequires:	cmake >= 3.11.0-1
+BuildRequires:	make
 
 %description
 The QtXmlPatterns module provides support for XPath, XQuery, XSLT and
